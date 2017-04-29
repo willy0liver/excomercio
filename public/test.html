@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+	<link href="../css/table.css" rel="stylesheet" type="text/css" />
+
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$.ajax({
+			   url: 'http://localhost:8080/miApp/public/empleados/getAll',
+			   dataType:'json',
+			   success: function(data){
+	                obj = JSON.parse(data);
+
+	                $.each(obj, function(i,item){
+						//alert(this.isOnline)
+						$('#myTable tr:last').after('<tr><td>'+this.name+'</td><td>'+this.email+'</td><td>'+this.position+'</td><td>'+this.salary+'</td></tr>');
+					})
+	                return false;
+
+			   },
+	            error: function (xhr, status, error) {
+                       var err = eval("(" + xhr.responseText + ")");
+                       alert(err.Message);
+                    }
+				});
+		});
+	</script>
+</head>
+<body>
+	<div id="divContent">
+	<h3>Lista de empleados</h3>
+
+	<div class="row">
+		<input type="text" class="form-control" placeholder="Campo de texto">
+	</div>
+
+		<table id="myTable">
+			<thead>
+				<td>Name</td><td>email</td><td>position</td><td>salary</td>
+			</thead>
+			<tbody>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>
