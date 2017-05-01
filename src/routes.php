@@ -1,6 +1,9 @@
 <?php
 // Routes
 
+header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Methods:GET, POST');
+
 $app->get('/[{name}]', function ($request, $response, $args) {
     // Sample log message
     $this->logger->info("Slim-Skeleton '/' route");
@@ -55,8 +58,13 @@ $app->group('/empleados/', function () {
 	    				['Nombre'=>'Willy','Apellido'=>'Morales'],
 	    				['Nombre'=>'Leydi','Apellido'=>'Altamirano']
 	    		];
-	    		*/
+	    	*/	
 	    $usuarios = file_get_contents(__DIR__ . '/../public/employees.json');
+	    $url = 'http://rescaterdv.com/public/empleados/getAll';
+	    //$usuarios = file_get_contents($url);
+
+	    //$usuarios = json_decode(file_get_contents($url), true);
+	    
 
 	    return $response
 	    	->withHeader('Content-type', 'application/json')

@@ -5,14 +5,15 @@
 	<!-- Latest compiled and minified CSS -->
 	<!-- Bootstrap -->
     <link href="../dist/css/bootstrap.min.css" rel="stylesheet">
-
-	<!-- Optional theme -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <script src="../dist/jsonpath/jsonpath.min.js"></script>
 
 	<?php
 
 	// Consumiendo mi REST API
-	$data0 = file_get_contents("http://localhost:8080/miApp/public/empleados/getAll");
+	//$data0 = file_get_contents("http://localhost:8080/miApp/public/empleados/getAll");
+	//$data0 = file_get_contents(dameURL()."miApp/public/empleados/getAll");
+	$url = 'http://rescaterdv.com/public/empleados/getAll';
+	$data0 = file_get_contents($url);
 	$data = json_decode($data0, true);
 
 	$emp = json_decode($data);
@@ -83,7 +84,8 @@
 	</div>
 
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="../dist/js/jquery.min.js"></script>
+	<script src="../dist/js/tether.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="../dist/js/bootstrap.min.js"></script>
 </body>

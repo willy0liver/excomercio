@@ -8,7 +8,8 @@
 	<script type="text/javascript">
 		$(document).ready(function(){
 			$.ajax({
-			   url: 'http://localhost:8080/miApp/public/empleados/getAll',
+			   //url: 'http://localhost:8080/miApp/public/empleados/getAll',
+			   url: 'http://rescaterdv.com/public/empleados/getAll',
 			   dataType:'json',
 			   success: function(data){
 	                obj = JSON.parse(data);
@@ -21,10 +22,10 @@
 
 			   },
 	            error: function (xhr, status, error) {
-                       var err = eval("(" + xhr.responseText + ")");
-                       alert(err.Message);
-                    }
-				});
+                   var err = eval("(" + xhr.responseText + ")");
+                   alert(err.Message);
+                }
+			});	
 		});
 	</script>
 </head>
